@@ -47,6 +47,7 @@ class MBRateUsViewController : UIViewController {
     var positiveBlock : (()->Void)?
     var negativeBlock : (()->Void)?
     var dismissBlock : (()->Void)?
+    var iconAnimationBlock:((iconView: UIImageView)->Void)?
     
     var shouldRate : Bool
     var starImageOn : UIImage
@@ -87,12 +88,18 @@ class MBRateUsViewController : UIViewController {
             button.setImage(starImageOff, forState: .Normal)
         }
         
-        self.imageView.image = self.rateUsInfo.titleImage
-        
+        self.imageView.image = self.rateUsInfo.titleImage        
         self.dismissButton.tintColor = self.rateUsInfo.dismissButtonColor
     }
     
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.iconAnimationBlock?(iconView: self.imageView)        
+    }
+    
+
+
     @IBAction func dismiss(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: { _ in self.dismissBlock?()})
     }
