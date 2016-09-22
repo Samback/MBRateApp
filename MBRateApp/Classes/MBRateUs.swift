@@ -9,14 +9,14 @@
 import Foundation
 
 
-public class MBRateUs{
+open class MBRateUs{
 
-    public static let sharedInstance = MBRateUs()
+    open static let sharedInstance = MBRateUs()
 
-    public var rateUsInfo = MBRateUsInfo()
+    open var rateUsInfo = MBRateUsInfo()
     
-    public func showRateUs(base:UIViewController, positiveBlock:()->Void, negativeBlock:()->Void, dismissBlock:(()->Void)? = nil, iconAnimationBlock:((iconView: UIImageView)->Void)? = nil ){
-        let podBundle = NSBundle(forClass: self.dynamicType)
+    open func showRateUs(_ base:UIViewController, positiveBlock:@escaping ()->Void, negativeBlock:@escaping ()->Void, dismissBlock:(()->Void)? = nil, iconAnimationBlock:((_ iconView: UIImageView)->Void)? = nil ){
+        let podBundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "RateUs", bundle: podBundle)
         let vc = storyboard.instantiateInitialViewController() as! MBRateUsViewController
         
@@ -27,7 +27,7 @@ public class MBRateUs{
         
         vc.rateUsInfo = self.rateUsInfo
         
-        base.presentViewController(vc, animated: true, completion: nil)
+        base.present(vc, animated: true, completion: nil)
     }
     
 }
