@@ -110,6 +110,9 @@ class MBRateUsViewController : UIViewController {
     
     @IBAction func starTouchedDown(_ sender: UIButton) {
         for button: UIButton in self.starButtons {
+            button.setImage(starImageOff, for: UIControlState())
+        }
+        for button: UIButton in self.starButtons {
             if button.tag <= sender.tag {
                 button.setImage(starImageOn, for: UIControlState())
             }
@@ -125,10 +128,6 @@ class MBRateUsViewController : UIViewController {
     }
     
     @IBAction func starTouched(_ sender: UIButton) {
-        
-        for button: UIButton in self.starButtons {
-            button.setImage(starImageOff, for: UIControlState())
-        }
         
         if sender.tag >= self.rateUsInfo.successResult {
             self.resultLabel.text = self.rateUsInfo.positive
