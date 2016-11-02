@@ -88,19 +88,13 @@ class MBRateUsViewController : UIViewController {
             button.setImage(starImageOff, for: UIControlState())
         }
         
-        self.imageView.image = self.rateUsInfo.titleImage
-        
-       
-        
+        self.imageView.image = self.rateUsInfo.titleImage        
         self.dismissButton.tintColor = self.rateUsInfo.dismissButtonColor
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.imageView.layer.cornerRadius = 10
-        self.imageView.layer.masksToBounds = true
         self.iconAnimationBlock?(self.imageView)        
     }
     
