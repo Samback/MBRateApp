@@ -121,7 +121,10 @@ class MBRateUsViewController : UIViewController {
     }
     
     @IBAction func starTouched(_ sender: UIButton) {
-        self.starsMask.isHidden = false
+        
+        for button: UIButton in self.starButtons {
+            button.setImage(starImageOff, for: UIControlState())
+        }
         
         if sender.tag >= self.rateUsInfo.successResult {
             self.resultLabel.text = self.rateUsInfo.positive
